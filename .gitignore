@@ -1,0 +1,30 @@
+# Node modules
+node_modules/
+
+# Dossier de build généré par Vite
+dist/
+
+# Fichiers d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# Couverture de tests
+coverage/
+
+# Dossiers de cache
+.cache/
+.vite/
+
+# Fichiers et dossiers de configuration d'éditeurs/IDE
+.vscode/
+.idea/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
