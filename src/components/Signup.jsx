@@ -17,6 +17,7 @@ const Signup = () => {
     const [studyField, setStudyField]   = useState("");
     const [status, setStatus] = useState("");
     const [motivations, setMotivations] = useState([]);
+    const [otherMotivation, setOtherMotivation] = useState(""); // Champ pour "Autre"
     const [recontact, setRecontact]     = useState("");
     const [currentLevel, setCurrentLevel] = useState("");
     const [resources, setResources] = useState([]);
@@ -75,6 +76,7 @@ const Signup = () => {
             studyField,
             status,
             motivations,
+            otherMotivation,
             recontact,
             currentLevel,
             resources,
@@ -92,6 +94,7 @@ const Signup = () => {
             setStudyField("");
             setStatus("");
             setMotivations([]);
+            setOtherMotivation("");
             setRecontact("");
             setCurrentLevel("");
             setResources([]);
@@ -173,46 +176,56 @@ const Signup = () => {
                 </select>
                 <div className="signup-checkbox-group">
                     <p className="signup-label">Pourquoi souhaitez-vous tester Alfheim IA ?</p>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Innovation pédagogique"
                             checked={motivations.includes("Innovation pédagogique")}
                             onChange={() => handleMotivationChange("Innovation pédagogique")}
                         />
-                        Découvrir une nouvelle approche pédagogique
+                        <span style={{ marginLeft: '0.5em' }}>Découvrir une nouvelle approche pédagogique</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Besoin d'accompagnement"
                             checked={motivations.includes("Besoin d'accompagnement")}
                             onChange={() => handleMotivationChange("Besoin d'accompagnement")}
                         />
-                        Améliorer mon accompagnement dans mes cours/recherches
+                        <span style={{ marginLeft: '0.5em' }}>Améliorer mon accompagnement dans mes cours/recherches</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Curiosité"
                             checked={motivations.includes("Curiosité")}
                             onChange={() => handleMotivationChange("Curiosité")}
                         />
-                        Être curieux(se) et explorer de nouvelles technologies
+                        <span style={{ marginLeft: '0.5em' }}>Être curieux(se) et explorer de nouvelles technologies</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Autre"
                             checked={motivations.includes("Autre")}
                             onChange={() => handleMotivationChange("Autre")}
                         />
-                        Autre
+                        <span style={{ marginLeft: '0.5em' }}>Autre</span>
                     </label>
+                    {motivations.includes("Autre") && (
+                        <input
+                            type="text"
+                            placeholder="Veuillez préciser"
+                            value={otherMotivation}
+                            onChange={(e) => setOtherMotivation(e.target.value)}
+                            className="signup-input"
+                            style={{ marginTop: '0.5em' }}
+                        />
+                    )}
                 </div>
                 <div className="signup-radio-group">
                     <p className="signup-label">Souhaitez-vous être recontacté(e) ultérieurement ?</p>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="radio"
                             name="recontact"
@@ -221,9 +234,9 @@ const Signup = () => {
                             onChange={(e) => setRecontact(e.target.value)}
                             required
                         />
-                        Oui
+                        <span style={{ marginLeft: '0.5em' }}>Oui</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="radio"
                             name="recontact"
@@ -231,7 +244,7 @@ const Signup = () => {
                             checked={recontact === "non"}
                             onChange={(e) => setRecontact(e.target.value)}
                         />
-                        Non
+                        <span style={{ marginLeft: '0.5em' }}>Non</span>
                     </label>
                 </div>
                 <select
@@ -252,59 +265,59 @@ const Signup = () => {
                 </select>
                 <div className="signup-checkbox-group">
                     <p className="signup-label">Quel type de ressource vous intéresse le plus ?</p>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Modèles 3D interactifs"
                             checked={resources.includes("Modèles 3D interactifs")}
                             onChange={() => handleResourceChange("Modèles 3D interactifs")}
                         />
-                        Modèles 3D interactifs
+                        <span style={{ marginLeft: '0.5em' }}>Modèles 3D interactifs</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Animations pédagogiques"
                             checked={resources.includes("Animations pédagogiques")}
                             onChange={() => handleResourceChange("Animations pédagogiques")}
                         />
-                        Animations pédagogiques
+                        <span style={{ marginLeft: '0.5em' }}>Animations pédagogiques</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="IA pour répondre à mes questions"
                             checked={resources.includes("IA pour répondre à mes questions")}
                             onChange={() => handleResourceChange("IA pour répondre à mes questions")}
                         />
-                        IA pour répondre à mes questions
+                        <span style={{ marginLeft: '0.5em' }}>IA pour répondre à mes questions</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Ressources textuelles ou théoriques"
                             checked={resources.includes("Ressources textuelles ou théoriques")}
                             onChange={() => handleResourceChange("Ressources textuelles ou théoriques")}
                         />
-                        Ressources textuelles ou théoriques
+                        <span style={{ marginLeft: '0.5em' }}>Ressources textuelles ou théoriques</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Travaux pratiques virtuels"
                             checked={resources.includes("Travaux pratiques virtuels")}
                             onChange={() => handleResourceChange("Travaux pratiques virtuels")}
                         />
-                        Travaux pratiques virtuels
+                        <span style={{ marginLeft: '0.5em' }}>Travaux pratiques virtuels</span>
                     </label>
-                    <label>
+                    <label style={{ marginBottom: '0.5em' }}>
                         <input
                             type="checkbox"
                             value="Autre"
                             checked={resources.includes("Autre")}
                             onChange={() => handleResourceChange("Autre")}
                         />
-                        Autre
+                        <span style={{ marginLeft: '0.5em' }}>Autre</span>
                     </label>
                 </div>
                 <textarea
