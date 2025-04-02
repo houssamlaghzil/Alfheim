@@ -9,8 +9,8 @@ function Hero3D() {
     // Chargement d'une texture de dégradé + d'une normal map (optionnelle)
     // Placez vos fichiers (pastelGradient.png, normalMap.png) dans /public/textures/
     const [gradientTexture, normalMap] = useTexture([
-        "src/textures/3d-geometric-weave-abstract-wallpaper-background.jpg",
-        "src/textures/normalMap.jpg", // Supprimez si vous n'avez pas de normal map
+        "textures/3d-geometric-weave-abstract-wallpaper-background.jpg",
+        "textures/normalMap.jpg", // Supprimez si vous n'avez pas de normal map
     ]);
 
     // Animation de rotation

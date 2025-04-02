@@ -28,3 +28,5 @@ coverage/
 # Fichiers système
 .DS_Store
 Thumbs.db
+
+.firebase/

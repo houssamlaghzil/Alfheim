@@ -1,5 +1,7 @@
+// src/components/Navbar.jsx
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
 function Navbar() {
@@ -12,28 +14,19 @@ function Navbar() {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
-            {/* Logo et liens de navigation */}
             <div className="flex items-center space-x-8">
-              <a href="/" className="text-2xl font-bold text-blue-600 tracking-wide">
+              <Link to="/" className="text-2xl font-bold text-blue-600 tracking-wide">
                 ALFHEIM
-              </a>
+              </Link>
               <div className="hidden md:flex space-x-6">
-                <a
-                    href="#about"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
+                <Link to="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
                   En savoir plus
-                </a>
-                <a
-                    href="#contact"
-                    className="text-gray-600 hover:text-blue-600 transition-colors"
-                >
+                </Link>
+                <Link to="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
                   Contact
-                </a>
+                </Link>
               </div>
             </div>
-
-            {/* Boutons d'action */}
             <div className="flex items-center space-x-4">
               <Button variant="ghost" className="text-gray-600 hover:text-blue-600">
                 Se connecter

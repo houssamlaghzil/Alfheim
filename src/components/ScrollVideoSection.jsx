@@ -54,7 +54,7 @@ function ScrollVideoSection() {
                 <video
                     ref={videoRef}
                     onLoadedMetadata={handleLoadedMetadata}
-                    src="src/assets/videos/coloré flat plat illustratif annonce teasing vidéo.mp4" // Ajustez le chemin vers votre vidéo
+                    src="assets/videos/output.webm" // Ajustez le chemin vers votre vidéo
                     className="w-full h-full object-cover pointer-events-none"
                     controls={false}
                     muted
