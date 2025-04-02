@@ -1,19 +1,30 @@
-// src/Signup.jsx
+/**
+ * @file Signup.jsx
+ * @description Composant d'inscription complet pour Alfheim IA.
+ * Recueille de nombreuses informations et vérifie en temps réel si l'email est déjà enregistré dans Firebase.
+ */
+
 import React, { useState, useEffect } from "react";
 import { ref, push, query, orderByChild, equalTo, get } from "firebase/database";
 import { database } from "@/firebase";
-import "@/assets/css/Signup.css";  // Importation du fichier CSS
+import "@/assets/css/Signup.css";
 
 const Signup = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [role, setRole] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName]   = useState("");
+    const [email, setEmail]         = useState("");
     const [institution, setInstitution] = useState("");
+    const [studyField, setStudyField]   = useState("");
+    const [status, setStatus] = useState("");
+    const [motivations, setMotivations] = useState([]);
+    const [recontact, setRecontact]     = useState("");
+    const [currentLevel, setCurrentLevel] = useState("");
+    const [resources, setResources] = useState([]);
+    const [suggestions, setSuggestions] = useState("");
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
     const [isSubscribed, setIsSubscribed] = useState(false);
 
-    // Vérifie dès le chargement si l'utilisateur est déjà inscrit (via cookie)
     useEffect(() => {
         const cookies = document.cookie.split(";").reduce((acc, cookie) => {
             const [key, value] = cookie.trim().split("=");
@@ -25,11 +36,21 @@ const Signup = () => {
         }
     }, []);
 
+    const handleMotivationChange = (motivation) => {
+        setMotivations(prev =>
+            prev.includes(motivation) ? prev.filter(item => item !== motivation) : [...prev, motivation]
+        );
+    };
+
+    const handleResourceChange = (resource) => {
+        setResources(prev =>
+            prev.includes(resource) ? prev.filter(item => item !== resource) : [...prev, resource]
+        );
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
-
-        // Vérifie si l'email est déjà présent dans la base de données
         const subscriptionsRef = ref(database, "newsletter_subscriptions");
         const q = query(subscriptionsRef, orderByChild("email"), equalTo(email));
         try {
@@ -41,39 +62,49 @@ const Signup = () => {
             }
         } catch (err) {
             console.error("Erreur lors de la vérification de l'email :", err);
-            setMessage("Erreur lors de la vérification. Réessaye plus tard.");
+            setMessage("Erreur lors de la vérification. Réessayez plus tard.");
             setLoading(false);
             return;
         }
 
-        // Prépare l'objet d'inscription avec un timestamp
         const newSubscription = {
-            name,
+            firstName,
+            lastName,
             email,
-            role,
             institution,
+            studyField,
+            status,
+            motivations,
+            recontact,
+            currentLevel,
+            resources,
+            suggestions,
             timestamp: Date.now(),
         };
 
         try {
             await push(ref(database, "newsletter_subscriptions"), newSubscription);
             setMessage("Inscription réussie !");
-            setName("");
+            setFirstName("");
+            setLastName("");
             setEmail("");
-            setRole("");
             setInstitution("");
-
-            // Enregistre dans les cookies que l'utilisateur est inscrit (valable 1 an)
+            setStudyField("");
+            setStatus("");
+            setMotivations([]);
+            setRecontact("");
+            setCurrentLevel("");
+            setResources([]);
+            setSuggestions("");
             document.cookie = "subscribed=true; max-age=31536000; path=/";
             setIsSubscribed(true);
         } catch (error) {
             console.error("Erreur lors de l'inscription :", error);
-            setMessage("Erreur lors de l'inscription. Réessaye plus tard.");
+            setMessage("Erreur lors de l'inscription. Réessayez plus tard.");
         }
         setLoading(false);
     };
 
-    // Si l'utilisateur est déjà inscrit, affiche le logo de validation
     if (isSubscribed) {
         return (
             <div className="validation-logo">
@@ -87,42 +118,201 @@ const Signup = () => {
 
     return (
         <div className="signup-container">
-            <h2 className="signup-title">Inscrivez-vous à notre Newsletter</h2>
+            <h2 className="signup-title">Inscrivez-vous pour tester Alfheim IA</h2>
             <form onSubmit={handleSubmit} className="signup-form">
                 <input
                     type="text"
+                    placeholder="Prénom"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                    required
+                    className="signup-input"
+                />
+                <input
+                    type="text"
                     placeholder="Nom"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     required
                     className="signup-input"
                 />
                 <input
                     type="email"
-                    placeholder="Email"
+                    placeholder="Adresse Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                     className="signup-input"
                 />
-                <select
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                    required
-                    className="signup-select"
-                >
-                    <option value="" disabled>Je suis...</option>
-                    <option value="eleve">Élève</option>
-                    <option value="professeur">Professeur</option>
-                    <option value="chercheur">Chercheur</option>
-                    <option value="Investisseur">Investisseur</option>
-                </select>
                 <input
                     type="text"
-                    placeholder="Établissement / Institution (optionnel)"
+                    placeholder="Établissement ou Organisation"
                     value={institution}
                     onChange={(e) => setInstitution(e.target.value)}
                     className="signup-input"
+                />
+                <input
+                    type="text"
+                    placeholder="Domaine d’études ou d’activité"
+                    value={studyField}
+                    onChange={(e) => setStudyField(e.target.value)}
+                    className="signup-input"
+                />
+                <select
+                    value={status}
+                    onChange={(e) => setStatus(e.target.value)}
+                    required
+                    className="signup-select"
+                >
+                    <option value="" disabled>Statut</option>
+                    <option value="Étudiant(e)">Étudiant(e)</option>
+                    <option value="Enseignant(e)">Enseignant(e)</option>
+                    <option value="Chercheur(euse)">Chercheur(euse)</option>
+                    <option value="Passionné(e)/Curieux(se)">Passionné(e) / Curieux(se)</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <div className="signup-checkbox-group">
+                    <p className="signup-label">Pourquoi souhaitez-vous tester Alfheim IA ?</p>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Innovation pédagogique"
+                            checked={motivations.includes("Innovation pédagogique")}
+                            onChange={() => handleMotivationChange("Innovation pédagogique")}
+                        />
+                        Découvrir une nouvelle approche pédagogique
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Besoin d'accompagnement"
+                            checked={motivations.includes("Besoin d'accompagnement")}
+                            onChange={() => handleMotivationChange("Besoin d'accompagnement")}
+                        />
+                        Améliorer mon accompagnement dans mes cours/recherches
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Curiosité"
+                            checked={motivations.includes("Curiosité")}
+                            onChange={() => handleMotivationChange("Curiosité")}
+                        />
+                        Être curieux(se) et explorer de nouvelles technologies
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Autre"
+                            checked={motivations.includes("Autre")}
+                            onChange={() => handleMotivationChange("Autre")}
+                        />
+                        Autre
+                    </label>
+                </div>
+                <div className="signup-radio-group">
+                    <p className="signup-label">Souhaitez-vous être recontacté(e) ultérieurement ?</p>
+                    <label>
+                        <input
+                            type="radio"
+                            name="recontact"
+                            value="oui"
+                            checked={recontact === "oui"}
+                            onChange={(e) => setRecontact(e.target.value)}
+                            required
+                        />
+                        Oui
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="recontact"
+                            value="non"
+                            checked={recontact === "non"}
+                            onChange={(e) => setRecontact(e.target.value)}
+                        />
+                        Non
+                    </label>
+                </div>
+                <select
+                    value={currentLevel}
+                    onChange={(e) => setCurrentLevel(e.target.value)}
+                    required
+                    className="signup-select"
+                >
+                    <option value="" disabled>Niveau d’études actuel</option>
+                    <option value="Lycée">Lycée</option>
+                    <option value="L1">L1</option>
+                    <option value="L2">L2</option>
+                    <option value="L3">L3</option>
+                    <option value="Classe Préparatoire">Classe Préparatoire</option>
+                    <option value="Master">Master</option>
+                    <option value="Doctorat">Doctorat</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <div className="signup-checkbox-group">
+                    <p className="signup-label">Quel type de ressource vous intéresse le plus ?</p>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Modèles 3D interactifs"
+                            checked={resources.includes("Modèles 3D interactifs")}
+                            onChange={() => handleResourceChange("Modèles 3D interactifs")}
+                        />
+                        Modèles 3D interactifs
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Animations pédagogiques"
+                            checked={resources.includes("Animations pédagogiques")}
+                            onChange={() => handleResourceChange("Animations pédagogiques")}
+                        />
+                        Animations pédagogiques
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="IA pour répondre à mes questions"
+                            checked={resources.includes("IA pour répondre à mes questions")}
+                            onChange={() => handleResourceChange("IA pour répondre à mes questions")}
+                        />
+                        IA pour répondre à mes questions
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Ressources textuelles ou théoriques"
+                            checked={resources.includes("Ressources textuelles ou théoriques")}
+                            onChange={() => handleResourceChange("Ressources textuelles ou théoriques")}
+                        />
+                        Ressources textuelles ou théoriques
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Travaux pratiques virtuels"
+                            checked={resources.includes("Travaux pratiques virtuels")}
+                            onChange={() => handleResourceChange("Travaux pratiques virtuels")}
+                        />
+                        Travaux pratiques virtuels
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            value="Autre"
+                            checked={resources.includes("Autre")}
+                            onChange={() => handleResourceChange("Autre")}
+                        />
+                        Autre
+                    </label>
+                </div>
+                <textarea
+                    placeholder="Avez-vous une suggestion ou une attente spécifique vis-à-vis d’Alfheim IA ?"
+                    value={suggestions}
+                    onChange={(e) => setSuggestions(e.target.value)}
+                    className="signup-textarea"
+                    rows="4"
                 />
                 <button
                     type="submit"

@@ -1,6 +1,11 @@
-// src/components/Contact.jsx
-import React from 'react';
-import Signup from '@/components/Signup.jsx';
+/**
+ * @file Contact.jsx
+ * @description Page de contact pour Alfheim IA.
+ * Affiche le formulaire d'inscription complet pour prendre contact.
+ */
+
+import React from "react";
+import Signup from "@/components/Signup";
 
 const Contact = () => {
     return (
