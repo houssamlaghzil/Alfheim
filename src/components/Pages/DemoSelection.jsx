@@ -15,12 +15,12 @@ const DemoSelection = () => {
             <div className="flex flex-col gap-4 w-full max-w-md">
                 <Link to="/demo/information">
                     <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
-                        Demo 2 : Information dans l'espace
+                        Demo 1 : Information dans l'espace
                     </Button>
                 </Link>
                 <Link to="/demo/conception">
                     <Button className="w-full bg-purple-600 hover:bg-purple-700 text-white">
-                        Demo 3 : Conception réalité
+                        Demo 2 : Conception réalité
                     </Button>
                 </Link>
             </div>
