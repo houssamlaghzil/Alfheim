@@ -7,6 +7,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+
 const About = () => {
     return (
         <div className="min-h-screen bg-white text-gray-900 py-10">
