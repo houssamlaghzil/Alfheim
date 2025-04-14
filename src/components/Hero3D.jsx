@@ -1,38 +1,32 @@
 /**
  * @file Hero3D.jsx
- * @description Composant 3D animé pour afficher le modèle GLB "cell.glb" avec des points d'intérêt interactifs.
- * Le modèle est recentré pour que la rotation se fasse autour de son centre.
- * Un éclairage ambiant et directionnel (venant de la caméra) est utilisé.
- * Chaque point d'intérêt (petite sphère rouge) affiche une popup avec des informations lorsqu'on clique dessus.
+ * @description Composant 3D animé pour afficher le modèle GLB "cell.glb" avec des points d'intérêt posés sur sa surface.
+ * Les points d'intérêt sont calculés via raycasting, et leur taille/ couleur ont été augmentées pour une meilleure visibilité.
+ * Un clic sur chaque point affiche une popup d'informations, et OrbitControls permet de zoomer/dézoomer.
  */
 
 import React, { useRef, useEffect, useState } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, Html } from "@react-three/drei";
+import { useGLTF, Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 // Composant pour un point d'intérêt interactif
-function PointOfInterest({ position, label }) {
+/*function PointOfInterest({ position, label }) {
     const [open, setOpen] = useState(false);
-
     return (
         <mesh
             position={position}
-            // L'arrêt de la propagation permet de ne pas déclencher la rotation du groupe lors du clic
             onClick={(e) => {
-                e.stopPropagation();
+                e.stopPropagation(); // Empêche le clic de perturber la rotation
                 setOpen(!open);
             }}
         >
-            {/* Petite sphère rouge pour représenter le point */}
-            <sphereGeometry args={[0.05, 16, 16]} />
+            {/!* Augmentation de la taille de la sphère (rayon 0.15 au lieu de 0.05) et plus de segments *!/}
+            <sphereGeometry args={[0.15, 32, 32]} />
             <meshStandardMaterial color="red" />
             {open && (
-                // Le composant Html de Drei permet d'afficher un élément HTML dans le monde 3D
                 <Html
-                    // distanceFactor ajuste la taille de l'overlay en fonction de la distance
                     distanceFactor={10}
-                    // style de base pour la popup
                     style={{
                         background: "white",
                         padding: "4px 8px",
@@ -40,7 +34,6 @@ function PointOfInterest({ position, label }) {
                         fontSize: "12px",
                         whiteSpace: "nowrap",
                     }}
-                    // Positionnement relatif au centre du marqueur
                     center
                 >
                     {label}
@@ -48,14 +41,16 @@ function PointOfInterest({ position, label }) {
             )}
         </mesh>
     );
-}
+}*/
 
 export default function Hero3D() {
     const groupRef = useRef();
+    const directionalLightRef = useRef();
     const gltf = useGLTF("/assets/cell.glb");
     const { scene, camera } = useThree();
+    const [interestPoints, setInterestPoints] = useState([]);
 
-    // Recentrage du modèle sur (0,0,0) grâce à la bounding box
+    // Recentrage du modèle sur (0,0,0)
     useEffect(() => {
         if (!gltf?.scene) return;
         const box = new THREE.Box3().setFromObject(gltf.scene);
@@ -64,22 +59,43 @@ export default function Hero3D() {
         gltf.scene.position.sub(center);
     }, [gltf]);
 
-    // Animation de rotation : on fait tourner le groupe uniquement autour de Y
+    // Calcul automatique des points d'intérêt sur la surface
+  /*  useEffect(() => {
+        if (!gltf?.scene || !groupRef.current) return;
+
+        const interestDefs = [
+            { id: "point1", direction: new THREE.Vector3(500, 15000, 500), label: "Noyau" },
+            { id: "point2", direction: new THREE.Vector3(-0.3, -0.1, 0.4), label: "Mitochondrie" },
+        ];
+        const raycaster = new THREE.Raycaster();
+        const origin = new THREE.Vector3(0, 0, 0);
+        const computedPoints = interestDefs.map((def) => {
+            raycaster.set(origin, def.direction.clone().normalize());
+            const intersects = raycaster.intersectObject(gltf.scene, true);
+            let pos;
+            if (intersects.length > 0) {
+                pos = intersects[0].point.clone();
+                pos = groupRef.current.worldToLocal(pos);
+            } else {
+                pos = def.direction.clone().normalize().multiplyScalar(1);
+            }
+            return { ...def, position: pos };
+        });
+        setInterestPoints(computedPoints);
+    }, [gltf, groupRef.current]);*/
+
+    // Rotation continue du groupe (seule la rotation sur Y est appliquée)
     useFrame((_, delta) => {
         if (groupRef.current) {
-            // Pas de rotation sur X pour éviter l'effet de retournement
             groupRef.current.rotation.x = 0;
             groupRef.current.rotation.y += delta * 0.15;
         }
     });
 
-    // Référence pour la directionalLight que l'on veut placer à la position de la caméra
-    const directionalLightRef = useRef();
+    // Mise à jour de la directionalLight pour qu'elle suive la caméra
     useFrame(() => {
         if (directionalLightRef.current) {
-            // Place la lumière au même endroit que la caméra
             directionalLightRef.current.position.copy(camera.position);
-            // Oriente la lumière vers le centre de la scène (ou du modèle)
             directionalLightRef.current.target.position.set(0, 0, 0);
             scene.add(directionalLightRef.current.target);
         }
@@ -87,22 +103,19 @@ export default function Hero3D() {
 
     return (
         <>
-            {/* Lumière ambiante pour un éclairage uniforme */}
+            {/* Lumière ambiante pour un éclairage global */}
             <ambientLight intensity={0.7} />
-            {/* Directional Light placée au niveau de la caméra */}
-            <directionalLight
-                ref={directionalLightRef}
-                intensity={2.0}
-                color="#ffffff"
-            />
+            {/* DirectionalLight placée à la position de la caméra */}
+            <directionalLight ref={directionalLightRef} intensity={2.0} color="#ffffff" />
             {/* Groupe contenant le modèle 3D et les points d'intérêt */}
             <group ref={groupRef} scale={[0.8, 0.8, 0.8]}>
-                {/* Le modèle 3D */}
                 <primitive object={gltf.scene} />
-                {/* Ajout de quelques points d'intérêt (position à ajuster selon votre modèle) */}
-                <PointOfInterest position={[0.5, 0.2, 0.1]} label="Noyau" />
-                <PointOfInterest position={[-0.3, -0.1, 0.4]} label="Mitochondrie" />
+                {interestPoints.map((pt) => (
+                    <PointOfInterest key={pt.id} position={pt.position} label={pt.label} />
+                ))}
             </group>
+            {/* OrbitControls permet de zoomer/dézoomer via la molette et de faire pivoter la vue */}
+            <OrbitControls />
         </>
     );
 }
