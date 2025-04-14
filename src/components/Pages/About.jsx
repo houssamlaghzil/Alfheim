@@ -15,11 +15,13 @@ import illustrationanimation from "../../assets/img/Image TP acceuil.png";
 import illustrationTP from "../../assets/img/Image TP.png";
 import illustrationsuivi from "../../assets/img/Suivi des progrès.png";
 import illustrationVR from "../../assets/img/Mode VR.png";
+import vidéo3D from "../../assets/videos/Model 3D.mp4";
+import vidéoAnimation from "../../assets/videos/Animation.mp4";
 
 //
 // Composant ExpandableCard
 //
-const ExpandableCard = ({ title, intro, children, image }) => {
+const ExpandableCard = ({ title, intro, children, image, video }) => {
     const [expanded, setExpanded] = useState(false);
 
     return (
@@ -29,12 +31,23 @@ const ExpandableCard = ({ title, intro, children, image }) => {
             transition={{ duration: 0.5 }}
             className="bg-white rounded-2xl shadow-xl p-6 border border-gray-200"
         >
-            {image && (
-                <img
-                    src={image}
-                    alt="illustration"
+            {video ? (
+                <video
+                    src={video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
                     className="w-full h-48 object-cover rounded-xl mb-4"
                 />
+            ) : (
+                image && (
+                    <img
+                        src={image}
+                        alt="illustration"
+                        className="w-full h-48 object-cover rounded-xl mb-4"
+                    />
+                )
             )}
             <h2 className="text-2xl font-semibold mb-2">{title}</h2>
             <p className="text-gray-600 mb-2">{intro}</p>
@@ -101,7 +114,6 @@ const About = () => {
                     <ExpandableCard
                         title="Notre Mission"
                         intro="Une science vivante et accessible grâce à la technologie."
-                        image={illustrationAI}
                     >
                         <p>
                             Rendre l'apprentissage scientifique plus immersif, plus
@@ -197,7 +209,7 @@ const About = () => {
                     <ExpandableCard
                         title="Modèles 3D interactifs"
                         intro="Explorez la science en 3D comme jamais auparavant."
-                        image={illustration3D}
+                        video={vidéo3D}
                     >
                         <p>
                             Visualisez, explorez et comprenez les structures et phénomènes
@@ -210,7 +222,7 @@ const About = () => {
                     <ExpandableCard
                         title="Animations dynamiques"
                         intro="Observez les processus scientifiques en mouvement."
-                        image={illustrationanimation}
+                        video={vidéoAnimation}
                     >
                         <p>
                             Observez les processus scientifiques en action grâce à des
