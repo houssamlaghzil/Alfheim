@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && firebase deploy --only hosting",
+    "build": "vite build && firebase deploy --only hosting && cd functions && npm run build && firebase deploy --only functions && cd ..",
     "preview": "vite build && vite preview --host"
   },
   "dependencies": {

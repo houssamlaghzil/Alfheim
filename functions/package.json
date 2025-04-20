@@ -1,5 +1,8 @@
 {
+  "name": "functions",
+  "private": true,
   "main": "lib/index.js",
+  "type": "commonjs",
   "scripts": {
     "genkit:start": "genkit start -- tsx --watch src/genkit-sample.ts",
     "build": "tsc",
@@ -10,9 +13,8 @@
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
-  "name": "functions",
   "engines": {
-    "node": "22"
+    "node": "18"
   },
   "dependencies": {
     "@genkit-ai/vertexai": "^1.5.0",
@@ -25,6 +27,5 @@
     "firebase-functions-test": "^3.1.0",
     "tsx": "^4.19.3",
     "typescript": "^4.9.5"
-  },
-  "private": true
+  }
 }

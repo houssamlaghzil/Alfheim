@@ -6,6 +6,17 @@
       "$subscriptionId": {
         ".write": "newData.exists() && newData.child('email').isString() && newData.child('name').isString()"
       }
+    },
+    "models": {
+      "$modelId": {
+        // Lecture autorisée uniquement aux utilisateurs authentifiés
+        ".read": "auth != null",
+        // Écriture autorisée :
+        // - à la création si newData.userId === auth.uid
+        // - à la modification si data.userId === auth.uid
+        ".write": "auth != null && ( ( !data.exists() && newData.child('userId').val() === auth.uid ) || ( data.exists() && data.child('userId').val() === auth.uid ) )"
+      }
     }
   }
 }
+
