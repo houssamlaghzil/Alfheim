@@ -6,7 +6,7 @@
     width: 90%;
     margin: 2rem auto;
     padding: 2rem 2.5rem;
-    background-color: #ffffff;
+    background-color: hsl(var(--card));
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -21,7 +21,7 @@
     font-weight: 600;
     margin-bottom: 1.5rem;
     text-align: center;
-    color: #1f2937;
+    color: hsl(var(--foreground));
 }
 
 /* Styles généraux du formulaire */
@@ -37,7 +37,9 @@
 .signup-textarea {
     width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid hsl(var(--border));
+    background-color: hsl(var(--input));
+    color: hsl(var(--foreground));
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
@@ -60,7 +62,7 @@
 .signup-label {
     font-weight: 500;
     margin-bottom: 0.25rem;
-    color: #374151;
+    color: hsl(var(--foreground));
 }
 
 /* Bouton de soumission */
@@ -88,7 +90,7 @@
     text-align: center;
     margin-top: 1rem;
     font-size: 1rem;
-    color: #1f2937;
+    color: hsl(var(--foreground));
 }
 
 /* Styles pour le logo de validation affiché après inscription */
