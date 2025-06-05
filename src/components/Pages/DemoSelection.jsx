@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 
 const DemoSelection = () => {
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+        <div className="min-h-screen bg-background text-foreground flex flex-col items-center justify-center p-4">
             <h1 className="text-4xl font-bold mb-8">Choisissez votre démonstration</h1>
             <div className="flex flex-col gap-4 w-full max-w-md">
                 <Link to="/demo/information">

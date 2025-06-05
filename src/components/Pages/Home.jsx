@@ -29,7 +29,6 @@ const Home = () => {
             // On définit la hauteur du Canvas en fonction de la hauteur de la fenêtre.
             const newHeight = window.innerWidth < 768 ? window.innerHeight * 0.5 : window.innerHeight * 0.75;
             setCanvasHeight(newHeight);
-            console.log("[Resize] new canvasHeight:", newHeight);
         };
         handleResize();
         window.addEventListener("resize", handleResize);

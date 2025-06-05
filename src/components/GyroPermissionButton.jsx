@@ -11,11 +11,8 @@ const GyroPermissionButton = () => {
             DeviceOrientationEvent.requestPermission()
                 .then((response) => {
                     setPermission(response);
-                    console.log("Permission:", response);
                 })
                 .catch((error) => console.error("Erreur de permission:", error));
-        } else {
-            console.log("Aucune permission requise ou non supportée.");
         }
     };
 

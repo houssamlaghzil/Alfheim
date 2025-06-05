@@ -158,7 +158,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="signup-container max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-md">
+        <div className="signup-container max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-md">
             <h2 className="signup-title text-3xl font-bold text-center mb-6">
                 Inscrivez-vous pour tester Alfheim IA
             </h2>

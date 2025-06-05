@@ -16,7 +16,7 @@ import { DemoInformation } from "@/components/Pages/demos/DemoInformation.jsx";
 
 function App() {
     return (
-        <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 text-gray-900">
+        <div className="min-h-screen bg-background text-foreground">
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />

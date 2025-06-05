@@ -32,17 +32,17 @@ function Annotation({ children, info, ...props }) {
             occlude="blending"
             portal={document.body}
             zIndexRange={[10000, 100000]}
-            style={{ pointerEvents: 'none',background: '#ffffff'}}
+            style={{ pointerEvents: 'none', background: 'hsl(var(--card))' }}
         >
             <div
                 className="annotation cursor-pointer"
                 onClick={handleClick}
                 style={{
-                    background: '#ffffff', // Fond opaque
+                    background: 'hsl(var(--card))',
                     padding: '0.3em 0.6em',
                     borderRadius: '4px',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                    color: '#333',
+                    color: 'hsl(var(--foreground))',
                     pointerEvents: 'auto'
                 }}
             >
@@ -51,7 +51,7 @@ function Annotation({ children, info, ...props }) {
                     <div
                         className="annotation"
                         style={{
-                            background: '#ffffff', // Fond opaque pour la popup
+                            background: 'hsl(var(--card))',
                             padding: '0.4em 0.8em',
                             border: '1px solid #ccc',
                             borderRadius: '4px',
