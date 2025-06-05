@@ -56,7 +56,7 @@ const Home = () => {
                     className="space-y-6"
                 >
                     <h1 className="text-5xl font-bold leading-tight">ALFHEIM AI</h1>
-                    <p className="text-xl text-gray-700">
+                    <p className="text-xl text-gray-700 dark:text-gray-300">
                         Transformez et simplifiez l’apprentissage des sciences grâce à une plateforme immersive, interactive et personnalisée, pensée pour les établissements, professeurs, étudiants et passionnés.
                     </p>
                     <div className="space-x-4">
@@ -109,33 +109,33 @@ const Home = () => {
                     >
                         <h2 className="text-4xl font-bold">Aperçu des fonctionnalités</h2>
                         <div className="grid md:grid-cols-3 gap-8">
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
                                     Modèles 3D interactifs & Animations dynamiques
                                 </h3>
-                                <p className="text-gray-700">
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Visualisez et explorez les concepts scientifiques en profondeur.
                                 </p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
                                     Travaux pratiques immersifs (Mode VR inclus)
                                 </h3>
-                                <p className="text-gray-700">
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Mettez en pratique vos connaissances en ligne ou en VR.
                                 </p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">
                                     IA pédagogique adaptative (Recherche intelligente & Analyse)
                                 </h3>
-                                <p className="text-gray-700">
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Un accompagnement personnalisé, des réponses instantanées.
                                 </p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">Suivi des progrès</h3>
-                                <p className="text-gray-700">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Suivi des progrès</h3>
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Analysez votre évolution et optimisez vos acquis.
                                 </p>
                             </div>
@@ -158,21 +158,21 @@ const Home = () => {
                     >
                         <h2 className="text-4xl font-bold">Nos avantages</h2>
                         <div className="grid md:grid-cols-3 gap-8">
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">Apprentissage immersif</h3>
-                                <p className="text-gray-700">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Apprentissage immersif</h3>
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Plongez dans un univers 3D interactif pour une compréhension concrète des concepts scientifiques.
                                 </p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">IA adaptative</h3>
-                                <p className="text-gray-700">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">IA adaptative</h3>
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Un accompagnement personnalisé qui s'ajuste à vos besoins et à votre rythme d'apprentissage.
                                 </p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">Contenu de qualité</h3>
-                                <p className="text-gray-700">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Contenu de qualité</h3>
+                                <p className="text-gray-700 dark:text-gray-300">
                                     Des ressources fiables, conçues en collaboration avec des enseignants, chercheurs et laboratoires, régulièrement mises à jour pour assurer un apprentissage de qualité.
                                 </p>
                             </div>

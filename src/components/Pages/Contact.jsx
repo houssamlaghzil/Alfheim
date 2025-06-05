@@ -22,7 +22,7 @@ const cardVariants = {
 
 const Contact = () => {
     return (
-        <div className="min-h-screen bg-white text-gray-900 py-16">
+        <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-16">
             <div className="container mx-auto px-4">
                 {/* Titre animé */}
                 <motion.h1
@@ -38,7 +38,7 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                     {/* Capsule Contact */}
                     <motion.div
-                        className="bg-gray-50 p-8 border border-gray-200 shadow-sm transition-colors"
+                        className="bg-gray-50 dark:bg-gray-800 p-8 border border-gray-200 dark:border-gray-700 shadow-sm transition-colors"
                         variants={cardVariants}
                         whileHover="hover"
                         initial={{ opacity: 0, x: -50, borderRadius: "0.5rem" }}  // coins ~8px
@@ -46,17 +46,17 @@ const Contact = () => {
                         transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-3xl font-bold mb-4">Une question ou une demande ?</h2>
-                        <p className="text-lg mb-4">
+                        <p className="text-lg mb-4 text-gray-700 dark:text-gray-300">
                             Pour une démonstration, une idée à partager ou toute collaboration, notre équipe est disponible 24/7.
                         </p>
-                        <p className="text-lg">
+                        <p className="text-lg text-gray-700 dark:text-gray-300">
                             Remplissez le formulaire ou contactez-nous directement par email.
                         </p>
                     </motion.div>
 
                     {/* Capsule Partenariat / Investissement */}
                     <motion.div
-                        className="bg-gray-50 p-8 border border-gray-200 shadow-sm transition-colors"
+                        className="bg-gray-50 dark:bg-gray-800 p-8 border border-gray-200 dark:border-gray-700 shadow-sm transition-colors"
                         variants={cardVariants}
                         whileHover="hover"
                         initial={{ opacity: 0, x: 50, borderRadius: "0.5rem" }}
@@ -64,10 +64,10 @@ const Contact = () => {
                         transition={{ duration: 0.3 }}
                     >
                         <h2 className="text-3xl font-bold mb-4">Partenariat / Investissement</h2>
-                        <p className="text-lg mb-4">
+                        <p className="text-lg mb-4 text-gray-700 dark:text-gray-300">
                             Soutenez la révolution de l'apprentissage scientifique en devenant partenaire ou investisseur.
                         </p>
-                        <p className="text-lg">
+                        <p className="text-lg text-gray-700 dark:text-gray-300">
                             Contactez-nous directement par mail à :{" "}
                             <a
                                 href="mailto:contact@alfheim-ai.com"
@@ -81,7 +81,7 @@ const Contact = () => {
 
                 {/* Coordonnées et réseaux sociaux */}
                 <motion.div
-                    className="mt-16 bg-gray-50 p-8 border border-gray-200 shadow-sm text-center transition-colors"
+                    className="mt-16 bg-gray-50 dark:bg-gray-800 p-8 border border-gray-200 dark:border-gray-700 shadow-sm text-center transition-colors"
                     variants={cardVariants}
                     whileHover="hover"
                     initial={{ opacity: 0, y: 20, borderRadius: "0.5rem" }}
@@ -89,9 +89,9 @@ const Contact = () => {
                     transition={{ duration: 0.3 }}
                 >
                     <h3 className="text-2xl font-bold mb-4">Nos Coordonnées</h3>
-                    <p className="text-lg mb-1">contact@alfheim-ai.com</p>
-                    <p className="text-lg mb-1">b.araujo@alfheim-ai.com</p>
-                    <p className="text-lg mb-4">+33 7 69 13 60 50</p>
+                    <p className="text-lg mb-1 text-gray-700 dark:text-gray-300">contact@alfheim-ai.com</p>
+                    <p className="text-lg mb-1 text-gray-700 dark:text-gray-300">b.araujo@alfheim-ai.com</p>
+                    <p className="text-lg mb-4 text-gray-700 dark:text-gray-300">+33 7 69 13 60 50</p>
                     {/* Icônes réseaux sociaux */}
                     <div className="flex justify-center space-x-6">
                         <a
