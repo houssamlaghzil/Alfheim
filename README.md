@@ -4,6 +4,11 @@ This project is a demo web platform for showcasing Alfheim AI. The interface has
 
 New pages include a detailed **Features** section and **Pricing** plans tailored for universities.
 
+Recent additions showcase advanced 3D capabilities:
+- **Laboratoire VR** accessible depuis `/labs/vr` pour expérimenter la réalité virtuelle dans le navigateur.
+- **Mode collaboratif** via `/labs/collab` pour partager les mouvements en temps réel.
+- **Tableau analytique** disponible à `/analytics` (en cours d'enrichissement).
+
 ## Installation
 
 1. Install dependencies:

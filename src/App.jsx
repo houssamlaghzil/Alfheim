@@ -16,6 +16,9 @@ import Pricing from '@/components/Pages/Pricing.jsx';
 import DemoSelection from "@/components/Pages/DemoSelection.jsx";
 import { DemoConception } from "@/components/Pages/demos/DemoConception.jsx";
 import { DemoInformation } from "@/components/Pages/demos/DemoInformation.jsx";
+import LabXR from '@/components/Pages/labs/LabXR.jsx';
+import CollabLab from '@/components/Pages/labs/CollabLab.jsx';
+import Analytics from '@/components/Pages/Analytics.jsx';
 
 function App() {
     return (
@@ -30,6 +33,9 @@ function App() {
                 <Route path="/demo" element={<DemoSelection />} />
                 <Route path="/demo/information" element={<DemoInformation />} />
                 <Route path="/demo/conception" element={<DemoConception />} />
+                <Route path="/labs/vr" element={<LabXR />} />
+                <Route path="/labs/collab" element={<CollabLab />} />
+                <Route path="/analytics" element={<Analytics />} />
             </Routes>
             <Footer />
         </div>

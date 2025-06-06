@@ -69,6 +69,12 @@ const Navbar = () => {
                     >
                         Contact
                     </Link>
+                    <Link
+                        to="/labs/vr"
+                        className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                    >
+                        Labs VR
+                    </Link>
                     <Link to="/demo">
                         <Button className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md shadow-sm">
                             Essayer
@@ -156,6 +162,13 @@ const Navbar = () => {
                                 className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
                             >
                                 Contact
+                            </Link>
+                            <Link
+                                to="/labs/vr"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                            >
+                                Labs VR
                             </Link>
                             <Link
                                 to="/demo"

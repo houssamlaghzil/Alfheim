@@ -35,15 +35,20 @@ export default function Features() {
       <div className="container mx-auto space-y-12 px-6">
         <h1 className="text-5xl font-bold text-center mb-12">Fonctionnalités premium</h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((f, i) => (
-            <div key={i} className="p-6 rounded-xl bg-card shadow-sm space-y-4 text-center">
-              <div className="flex justify-center text-primary">{f.icon}</div>
-              <h3 className="text-2xl font-semibold">{f.title}</h3>
-              <p className="text-muted-foreground">{f.desc}</p>
-            </div>
-          ))}
+      {features.map((f, i) => (
+        <div key={i} className="p-6 rounded-xl bg-card shadow-sm space-y-4 text-center">
+          <div className="flex justify-center text-primary">{f.icon}</div>
+          <h3 className="text-2xl font-semibold">{f.title}</h3>
+          <p className="text-muted-foreground">{f.desc}</p>
         </div>
+      ))}
+      </div>
+      <div className="text-center pt-12 space-x-4">
+        <a href="/labs/vr" className="underline text-primary">Essayer la VR</a>
+        <a href="/labs/collab" className="underline text-primary">Mode collaboratif</a>
+        <a href="/analytics" className="underline text-primary">Voir l'analytics</a>
       </div>
     </div>
-  )
+  </div>
+)
 }
