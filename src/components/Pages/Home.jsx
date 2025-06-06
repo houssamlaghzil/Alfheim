@@ -48,32 +48,24 @@ const Home = () => {
 
     return (
         <main>
-            <div className="container grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)] py-20 bg-gradient-to-b from-background to-muted">
+            <div className="container grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)] py-20 bg-gradient-to-br from-purple-600/10 via-background to-background">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className="space-y-6"
                 >
-                    <h1 className="text-5xl font-bold leading-tight gradient-text">La science à portée de clic</h1>
-                    <p className="text-xl text-gray-700 dark:text-gray-300">
-                        Alfheim IA réinvente l'enseignement scientifique avec une approche 100% numérique, mêlant modèles 3D et expériences collaboratives accessibles partout.
-                    </p>
+                    <h1 className="text-6xl font-extrabold leading-tight">Alfheim&nbsp;IA</h1>
+                    <p className="text-2xl text-muted-foreground">La plateforme scientifique tout-en-un pour vos cours et vos recherches.</p>
                     <div className="space-x-4">
-                        <Link to="/demo">
-                            <Button
-                                onClick={handleGetStarted}
-                                className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg"
-                            >
-                                Démarrer la démo
+                        <Link to="/pricing">
+                            <Button onClick={handleGetStarted} className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg text-lg">
+                                Découvrir les offres
                             </Button>
                         </Link>
-                        <Link to="/about">
-                            <Button
-                                variant="outline"
-                                className="border-blue-600 text-blue-600 hover:bg-blue-600/10 px-8 py-3 rounded-lg text-lg"
-                            >
-                                En savoir plus
+                        <Link to="/features">
+                            <Button variant="outline" className="border-purple-600 text-purple-600 hover:bg-purple-600/10 px-8 py-3 rounded-lg text-lg">
+                                Fonctionnalités
                             </Button>
                         </Link>
                     </div>
@@ -95,43 +87,36 @@ const Home = () => {
                 </motion.div>
             </div>
 
-            {/* Section Aperçu des fonctionnalités avec fond en parallaxe */}
-            <section
-                className="relative py-20 bg-fixed bg-center bg-cover"
-                style={{ backgroundImage: `url(${parallaxBG})` }}
-            >
-                <div className="relative z-10">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-center space-y-8"
-                    >
-                        <h2 className="text-4xl font-bold">Fonctionnalités clés</h2>
-                        <div className="grid md:grid-cols-4 gap-8">
-                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
-                                <Box className="mx-auto w-8 h-8" />
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">3D & VR</h3>
-                                <p className="text-gray-700 dark:text-gray-300">Visualisez les phénomènes les plus complexes en réalité virtuelle.</p>
-                            </div>
-                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
-                                <Users className="mx-auto w-8 h-8" />
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Collaboratif</h3>
-                                <p className="text-gray-700 dark:text-gray-300">Travaillez à plusieurs en temps réel sur des expériences partagées.</p>
-                            </div>
-                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
-                                <BarChart2 className="mx-auto w-8 h-8" />
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Analytics</h3>
-                                <p className="text-gray-700 dark:text-gray-300">Suivez la progression de vos étudiants et identifiez leurs besoins.</p>
-                            </div>
-                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
-                                <DollarSign className="mx-auto w-8 h-8" />
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Tarifs Campus</h3>
-                                <p className="text-gray-700 dark:text-gray-300">Des formules flexibles et abordables pour toutes les universités.</p>
-                            </div>
+            {/* Aperçu rapide des fonctionnalités */}
+            <section className="py-20 text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="space-y-8"
+                >
+                    <h2 className="text-4xl font-bold">Quelques points forts</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        <div className="p-6 rounded-xl bg-card shadow-sm space-y-3">
+                            <Box className="mx-auto w-8 h-8" />
+                            <h3 className="text-xl font-semibold">3D & VR</h3>
+                            <p className="text-muted-foreground">Des expériences immersives et interactives.</p>
                         </div>
-                    </motion.div>
-                </div>
+                        <div className="p-6 rounded-xl bg-card shadow-sm space-y-3">
+                            <Users className="mx-auto w-8 h-8" />
+                            <h3 className="text-xl font-semibold">Collaboration</h3>
+                            <p className="text-muted-foreground">Travaillez ensemble en direct.</p>
+                        </div>
+                        <div className="p-6 rounded-xl bg-card shadow-sm space-y-3">
+                            <BarChart2 className="mx-auto w-8 h-8" />
+                            <h3 className="text-xl font-semibold">Analytics</h3>
+                            <p className="text-muted-foreground">Suivi complet des performances.</p>
+                        </div>
+                    </div>
+                    <Link to="/features">
+                        <Button className="mt-4">Voir toutes les fonctionnalités</Button>
+                    </Link>
+                </motion.div>
             </section>
 
             {/* Section Nos avantages avec fond en parallaxe */}

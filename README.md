@@ -2,6 +2,8 @@
 
 This project is a demo web platform for showcasing Alfheim AI. The interface has been fully redesigned with light and dark themes.
 
+New pages include a detailed **Features** section and **Pricing** plans tailored for universities.
+
 ## Installation
 
 1. Install dependencies:

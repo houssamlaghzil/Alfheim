@@ -52,6 +52,18 @@ const Navbar = () => {
                         En savoir plus
                     </Link>
                     <Link
+                        to="/features"
+                        className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                    >
+                        Fonctionnalités
+                    </Link>
+                    <Link
+                        to="/pricing"
+                        className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                    >
+                        Tarifs
+                    </Link>
+                    <Link
                         to="/contact"
                         className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
                     >
@@ -117,12 +129,26 @@ const Navbar = () => {
                         className="md:hidden bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm border-t border-gray-200 dark:border-gray-700"
                     >
                         <div className="px-6 py-4 flex flex-col space-y-4">
-                            <Link
+                        <Link
                                 to="/about"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
                             >
                                 En savoir plus
+                            </Link>
+                            <Link
+                                to="/features"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                            >
+                                Fonctionnalités
+                            </Link>
+                            <Link
+                                to="/pricing"
+                                onClick={() => setIsMenuOpen(false)}
+                                className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors font-medium"
+                            >
+                                Tarifs
                             </Link>
                             <Link
                                 to="/contact"
