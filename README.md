@@ -18,6 +18,12 @@ Run the development server with hot reload:
 npm run dev
 ```
 
+For a production-like build without deploying, use the preview command:
+
+```bash
+npm run preview
+```
+
 ## Build and Deploy
 
 Deployment uses Firebase Hosting. Make sure the Firebase CLI is available. You can install it globally:
@@ -33,3 +39,4 @@ npm run build
 ```
 
 This will execute `vite build` and then `npx firebase deploy --only hosting`.
+You can verify the production build locally with `npm run preview`.

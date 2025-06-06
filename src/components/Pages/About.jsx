@@ -80,7 +80,7 @@ const ExpandableCard = ({ title, intro, children, image, video }) => {
 //
 const About = () => {
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 px-4">
+        <div className="min-h-screen bg-background text-foreground py-10 px-4">
             <div className="max-w-6xl mx-auto">
                 {/* En-tête et texte introductif */}
                 <motion.h1

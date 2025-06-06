@@ -22,7 +22,7 @@ const cardVariants = {
 
 const Contact = () => {
     return (
-        <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-16">
+        <div className="min-h-screen bg-background text-foreground py-16">
             <div className="container mx-auto px-4">
                 {/* Titre animé */}
                 <motion.h1
