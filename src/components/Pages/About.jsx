@@ -29,7 +29,7 @@ const ExpandableCard = ({ title, intro, children, image, video }) => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl shadow-xl p-6 border border-gray-200"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 border border-gray-200 dark:border-gray-700"
         >
             {video ? (
                 <video
@@ -49,8 +49,8 @@ const ExpandableCard = ({ title, intro, children, image, video }) => {
                     />
                 )
             )}
-            <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-            <p className="text-gray-600 mb-2">{intro}</p>
+            <h2 className="text-2xl font-semibold mb-2 text-gray-900 dark:text-gray-100">{title}</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-2">{intro}</p>
             <button
                 onClick={() => setExpanded(!expanded)}
                 className="flex items-center text-blue-600 hover:underline mb-2"
@@ -65,7 +65,7 @@ const ExpandableCard = ({ title, intro, children, image, video }) => {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.4 }}
-                        className="mt-4 text-gray-700"
+                        className="mt-4 text-gray-700 dark:text-gray-300"
                     >
                         {children}
                     </motion.div>
@@ -80,7 +80,7 @@ const ExpandableCard = ({ title, intro, children, image, video }) => {
 //
 const About = () => {
     return (
-        <div className="min-h-screen bg-gray-50 text-gray-900 py-10 px-4">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-10 px-4">
             <div className="max-w-6xl mx-auto">
                 {/* En-tête et texte introductif */}
                 <motion.h1
@@ -95,7 +95,7 @@ const About = () => {
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
-                    className="text-lg mb-12 text-center"
+                    className="text-lg mb-12 text-center text-gray-700 dark:text-gray-300"
                 >
                     Alfheim AI révolutionne l'apprentissage des sciences en rendant
                     visibles et interactifs des concepts longtemps restés abstraits. Grâce
@@ -282,7 +282,7 @@ const About = () => {
 
                     {/* 9. Nos valeurs */}
                     <ExpandableCard title="Nos valeurs" intro="">
-                        <p className="text-center mb-6">
+                        <p className="text-center mb-6 text-gray-700 dark:text-gray-300">
                             Chez ALFHEIM AI, au-delà de l'innovation technologique, ce sont nos
                             convictions profondes qui guident chacune de nos actions.
                             <br />
@@ -291,10 +291,10 @@ const About = () => {
                         </p>
                         <div className="space-y-6">
                             <div>
-                                <h3 className="text-xl font-bold mb-1 text-center md:text-left">
+                                <h3 className="text-xl font-bold mb-1 text-center md:text-left text-gray-900 dark:text-gray-100">
                                     Accessibilité
                                 </h3>
-                                <p className="text-center md:text-left">
+                                <p className="text-center md:text-left text-gray-700 dark:text-gray-300">
                                     La connaissance scientifique doit être un droit, pas un
                                     privilège. Nous concevons des outils ouverts, disponibles sur
                                     tous les supports, pour réduire les inégalités d'accès à
@@ -302,40 +302,40 @@ const About = () => {
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-1 text-center md:text-left">
+                                <h3 className="text-xl font-bold mb-1 text-center md:text-left text-gray-900 dark:text-gray-100">
                                     Pédagogie avant tout
                                 </h3>
-                                <p className="text-center md:text-left">
+                                <p className="text-center md:text-left text-gray-700 dark:text-gray-300">
                                     La technologie n'est pas une fin en soi. Nous plaçons l'efficacité
                                     pédagogique au centre de notre développement, en travaillant en
                                     étroite collaboration avec des enseignants, chercheurs et experts.
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-1 text-center md:text-left">
+                                <h3 className="text-xl font-bold mb-1 text-center md:text-left text-gray-900 dark:text-gray-100">
                                     Innovation responsable
                                 </h3>
-                                <p className="text-center md:text-left">
+                                <p className="text-center md:text-left text-gray-700 dark:text-gray-300">
                                     Nous utilisons les technologies de pointe (3D, IA, VR) pour
                                     enrichir l'apprentissage, tout en garantissant une utilisation
                                     éthique, sécurisée et respectueuse de l'autonomie de l'élève.
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-1 text-center md:text-left">
+                                <h3 className="text-xl font-bold mb-1 text-center md:text-left text-gray-900 dark:text-gray-100">
                                     Apprentissage actif
                                 </h3>
-                                <p className="text-center md:text-left">
+                                <p className="text-center md:text-left text-gray-700 dark:text-gray-300">
                                     Comprendre, c'est vivre l'expérience. Nous encourageons
                                     l'expérimentation, l'interaction et l'exploration active, pour
                                     transformer chaque notion théorique en découverte personnelle.
                                 </p>
                             </div>
                             <div>
-                                <h3 className="text-xl font-bold mb-1 text-center md:text-left">
+                                <h3 className="text-xl font-bold mb-1 text-center md:text-left text-gray-900 dark:text-gray-100">
                                     Co-création
                                 </h3>
-                                <p className="text-center md:text-left">
+                                <p className="text-center md:text-left text-gray-700 dark:text-gray-300">
                                     ALFHEIM AI est construit avec les acteurs de l'éducation, pas à
                                     leur place. Nous développons nos contenus et outils en partenariat
                                     avec des établissements, enseignants, chercheurs et laboratoires

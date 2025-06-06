@@ -15,6 +15,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Hero3D from "@/components/Hero3D";
 import Signup from "@/components/Signup";
 import { Link } from "react-router-dom";
+import { Box, Users, BarChart2, DollarSign } from "lucide-react";
 
 // Import de l'image de background pour l'effet parallaxe
 import parallaxBG from "../../assets/img/Arrière-plan.png";
@@ -29,7 +30,6 @@ const Home = () => {
             // On définit la hauteur du Canvas en fonction de la hauteur de la fenêtre.
             const newHeight = window.innerWidth < 768 ? window.innerHeight * 0.5 : window.innerHeight * 0.75;
             setCanvasHeight(newHeight);
-            console.log("[Resize] new canvasHeight:", newHeight);
         };
         handleResize();
         window.addEventListener("resize", handleResize);
@@ -48,16 +48,16 @@ const Home = () => {
 
     return (
         <main>
-            <div className="container grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)]">
+            <div className="container grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)] py-20 bg-gradient-to-b from-background to-muted">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.8 }}
                     className="space-y-6"
                 >
-                    <h1 className="text-5xl font-bold leading-tight">ALFHEIM AI</h1>
-                    <p className="text-xl text-gray-700">
-                        Transformez et simplifiez l’apprentissage des sciences grâce à une plateforme immersive, interactive et personnalisée, pensée pour les établissements, professeurs, étudiants et passionnés.
+                    <h1 className="text-5xl font-bold leading-tight gradient-text">La science à portée de clic</h1>
+                    <p className="text-xl text-gray-700 dark:text-gray-300">
+                        Alfheim IA réinvente l'enseignement scientifique avec une approche 100% numérique, mêlant modèles 3D et expériences collaboratives accessibles partout.
                     </p>
                     <div className="space-x-4">
                         <Link to="/demo">
@@ -65,7 +65,7 @@ const Home = () => {
                                 onClick={handleGetStarted}
                                 className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg"
                             >
-                                Commencer maintenant
+                                Démarrer la démo
                             </Button>
                         </Link>
                         <Link to="/about">
@@ -107,37 +107,27 @@ const Home = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center space-y-8"
                     >
-                        <h2 className="text-4xl font-bold">Aperçu des fonctionnalités</h2>
-                        <div className="grid md:grid-cols-3 gap-8">
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                                    Modèles 3D interactifs & Animations dynamiques
-                                </h3>
-                                <p className="text-gray-700">
-                                    Visualisez et explorez les concepts scientifiques en profondeur.
-                                </p>
+                        <h2 className="text-4xl font-bold">Fonctionnalités clés</h2>
+                        <div className="grid md:grid-cols-4 gap-8">
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
+                                <Box className="mx-auto w-8 h-8" />
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">3D & VR</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Visualisez les phénomènes les plus complexes en réalité virtuelle.</p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                                    Travaux pratiques immersifs (Mode VR inclus)
-                                </h3>
-                                <p className="text-gray-700">
-                                    Mettez en pratique vos connaissances en ligne ou en VR.
-                                </p>
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
+                                <Users className="mx-auto w-8 h-8" />
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Collaboratif</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Travaillez à plusieurs en temps réel sur des expériences partagées.</p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">
-                                    IA pédagogique adaptative (Recherche intelligente & Analyse)
-                                </h3>
-                                <p className="text-gray-700">
-                                    Un accompagnement personnalisé, des réponses instantanées.
-                                </p>
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
+                                <BarChart2 className="mx-auto w-8 h-8" />
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Analytics</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Suivez la progression de vos étudiants et identifiez leurs besoins.</p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">Suivi des progrès</h3>
-                                <p className="text-gray-700">
-                                    Analysez votre évolution et optimisez vos acquis.
-                                </p>
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur text-center space-y-3">
+                                <DollarSign className="mx-auto w-8 h-8" />
+                                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Tarifs Campus</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Des formules flexibles et abordables pour toutes les universités.</p>
                             </div>
                         </div>
                     </motion.div>
@@ -156,32 +146,29 @@ const Home = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center space-y-8"
                     >
-                        <h2 className="text-4xl font-bold">Nos avantages</h2>
+                        <h2 className="text-4xl font-bold">Pourquoi choisir Alfheim&nbsp;IA&nbsp;?</h2>
                         <div className="grid md:grid-cols-3 gap-8">
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">Apprentissage immersif</h3>
-                                <p className="text-gray-700">
-                                    Plongez dans un univers 3D interactif pour une compréhension concrète des concepts scientifiques.
-                                </p>
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Immersion totale</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Chaque cours devient une expérience pratique et visuelle.</p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">IA adaptative</h3>
-                                <p className="text-gray-700">
-                                    Un accompagnement personnalisé qui s'ajuste à vos besoins et à votre rythme d'apprentissage.
-                                </p>
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Pédagogie sur mesure</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Notre IA adapte les contenus au niveau de chaque étudiant.</p>
                             </div>
-                            <div className="p-6 rounded-xl bg-white/80 backdrop-blur">
-                                <h3 className="text-xl font-semibold mb-4 text-gray-900">Contenu de qualité</h3>
-                                <p className="text-gray-700">
-                                    Des ressources fiables, conçues en collaboration avec des enseignants, chercheurs et laboratoires, régulièrement mises à jour pour assurer un apprentissage de qualité.
-                                </p>
+                            <div className="p-6 rounded-xl bg-white/80 dark:bg-gray-800/80 backdrop-blur">
+                                <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Savoir validé</h3>
+                                <p className="text-gray-700 dark:text-gray-300">Les ressources sont élaborées avec des chercheurs pour garantir leur exactitude.</p>
                             </div>
                         </div>
                     </motion.div>
                 </div>
             </section>
 
-            <Signup />
+            <section className="py-20 text-center">
+                <h2 className="text-4xl font-bold mb-6">Rejoignez la bêta dès maintenant</h2>
+                <Signup />
+            </section>
             <Toaster />
         </main>
     );

@@ -158,7 +158,7 @@ const Signup = () => {
     }
 
     return (
-        <div className="signup-container max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-md">
+        <div className="signup-container max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-lg rounded-md">
             <h2 className="signup-title text-3xl font-bold text-center mb-6">
                 Inscrivez-vous pour tester Alfheim IA
             </h2>
@@ -170,7 +170,7 @@ const Signup = () => {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {/* Champ Nom */}
                 <input
@@ -179,7 +179,7 @@ const Signup = () => {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {/* Champ Email */}
                 <input
@@ -188,7 +188,7 @@ const Signup = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {/* Champ Établissement */}
                 <input
@@ -196,7 +196,7 @@ const Signup = () => {
                     placeholder="Établissement ou Organisation"
                     value={institution}
                     onChange={(e) => setInstitution(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {/* Champ Domaine d’études ou d’activité */}
                 <input
@@ -204,14 +204,14 @@ const Signup = () => {
                     placeholder="Domaine d’études ou d’activité"
                     value={studyField}
                     onChange={(e) => setStudyField(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 />
                 {/* Sélecteur Statut */}
                 <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value)}
                     required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
                     <option value="" disabled>
                         Statut
@@ -276,7 +276,7 @@ const Signup = () => {
                             placeholder="Veuillez préciser"
                             value={otherMotivation}
                             onChange={(e) => setOtherMotivation(e.target.value)}
-                            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mt-2"
+                            className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 mt-2"
                         />
                     )}
                 </div>
@@ -315,8 +315,8 @@ const Signup = () => {
                     onChange={(e) => setCurrentLevel(e.target.value)}
                     required={status === "Étudiant(e)"}
                     disabled={status !== "Étudiant(e)"}
-                    className={`w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 ${
-                        status !== "Étudiant(e)" ? "bg-gray-100" : ""
+                    className={`w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 ${
+                        status !== "Étudiant(e)" ? "bg-gray-100 dark:bg-gray-700/50" : ""
                     }`}
                 >
                     <option value="" disabled>
@@ -402,7 +402,7 @@ const Signup = () => {
                     placeholder="Avez-vous une suggestion ou une attente spécifique vis-à-vis d’Alfheim IA ?"
                     value={suggestions}
                     onChange={(e) => setSuggestions(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                     rows="4"
                 />
                 {/* Bouton de soumission */}
