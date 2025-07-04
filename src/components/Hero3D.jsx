@@ -11,7 +11,7 @@ import { useGLTF, Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 
 // Composant pour un point d'intérêt interactif
-/*function PointOfInterest({ position, label }) {
+function PointOfInterest({ position, label }) {
     const [open, setOpen] = useState(false);
     return (
         <mesh
@@ -41,7 +41,7 @@ import * as THREE from "three";
             )}
         </mesh>
     );
-}*/
+}
 
 export default function Hero3D() {
     const groupRef = useRef();
